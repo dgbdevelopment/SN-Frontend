@@ -1,0 +1,25 @@
+<div class="container-fluid component">  
+   <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" class="col-11 col-md-8 col-lg-6 col-xl-5 mx-auto">
+      <h1 class="text-secondary text-center mb-4">Login de usuario</h1>
+      <div class="alert alert-success text-center" *ngIf="done=='yes'">
+         Usuario logueado correctamente
+      </div>
+      <div class="alert alert-warning text-center" *ngIf="done=='no'">
+         {{ errors }}
+      </div>
+      <div class="form-group">
+         <label for="nickoremail" class="text-primary font-weight-bold small">Usuario o E-mail</label>
+         <input type="text" class="form-control text-lowercase" #nickoremail="ngModel" [(ngModel)]="user.nick" name="nickoremail" placeholder="Nombre de Usuario o E-mail" required autofocus="true">
+         <small *ngIf="!nickoremail.valid && nickoremail.touched" class="form-text text-danger">El nombre de usuario o email es obligatorio</small>
+      </div>      
+      <div class="form-group">
+         <label for="password" class="text-primary font-weight-bold small">Contraseña</label>
+         <input type="password" autocomplete="off" class="form-control" #password="ngModel" [(ngModel)]="user.password" name="password" placeholder="Contraseña" required >
+         <!-- pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" -->
+         <small *ngIf="!password.valid && password.touched" class="form-text text-danger">La contraseña no es válida. Debe contener números, maýusculas, minúsculas y caracteres especiales con al menos 8 caracteres de longitud</small>
+      </div>      
+      <div class="form-group mt-3">         
+           <input type="submit" class="btn btn-primary offset-3 col-6" value="Entrar" [disabled]="!loginForm.form.valid">
+      </div>                
+   </form>
+</div>

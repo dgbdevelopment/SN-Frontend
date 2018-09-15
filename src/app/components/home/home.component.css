@@ -1,0 +1,9 @@
+.jumbotron{
+   background-color: rgba(0, 0, 0, 0.1);
+   border-radius: 20px;
+   box-shadow: 0px 0px 4px 1px black;
+}
+.jumbotron h1{
+   color: white;
+   text-shadow: 0px 0px 1px black;
+}

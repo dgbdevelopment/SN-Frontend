@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+/* ESTILOS GENERALES */
+.component{
+   background-image: linear-gradient( 180deg, #aff7ef 0%, #59c9bd 100%);
+   margin-top: 0px;
+   height: 100vh;
+   padding: 75px 25px 0 25px;
+}
+.btn:disabled{
+   cursor: not-allowed;
+}
+/* .fas{
+   padding:5px;
+   background-color: rgba(0,0,0,.2);
+   border-radius: 50%;
+} */

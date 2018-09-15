@@ -1,0 +1,66 @@
+/*-----------------------*/
+/* MODIFICACIONES NAVBAR */
+/*-----------------------*/
+@media (min-width: 992px) {
+   .navbar-expand-lg .navbar-nav .nav-link{
+      margin-right: 2rem;
+      margin-left: 2rem;
+   }
+   .navbar-expand-lg .navbar-nav .nav-link:nth-child(1){
+      margin-left: 1rem;
+   }
+}
+.container-fluid.fixed-top{
+   margin: 0;
+   padding: 0;
+}
+.btn-outline-light:hover {
+   color: white;
+   background-color: #00796B;
+}
+.navbar-nav .nav-link:hover{
+   background-color: #00796B;
+   border-radius: 5px;
+}
+.navbar .form-control{
+   display: inline-block;
+   width: auto;
+}
+.navbar-brand{
+   font-weight: 500;
+}
+button.navbar-toggler:hover{
+   background-color: #00796B;
+}
+button.navbar-toggler:focus{
+   outline-color: rgba(255,255,255,.2);
+}
+.actived{
+   color: #212121 !important;
+   font-weight: 500;
+   border-bottom: 3px solid #212121;   
+}
+.dropdown-menu.show{
+   background-color: #009688;
+   border: none;   
+   right: 0px;
+   margin-left: 1rem;
+   margin-right: -1rem !important;
+}
+a.dropdown-item.nav-link{
+   margin-left: 0 !important;
+   padding-left: .5rem !important;
+}
+.navbar-nav a.nav-link{
+   padding-left: .5rem;
+}
+.pointer{
+   cursor: pointer;
+}
+.nav-link.dropdown-toggle img{
+   object-fit: contain; 
+   border-radius: 50%; 
+   margin-right: 10px; 
+   background-color: white;
+   margin-top: -2px;
+}

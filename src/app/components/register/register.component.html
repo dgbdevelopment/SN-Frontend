@@ -1,0 +1,46 @@
+<div class="container-fluid component"> 
+   
+        
+   <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" class="col-11 col-md-8 col-lg-6 col-xl-5 mx-auto">
+      <h1 class="text-secondary text-center mb-4">Registro de usuario</h1>
+      <div class="alert alert-success" *ngIf="done=='yes'">
+         Registro completado correctamente <a [routerLink]="['/login/']" class="float-right">Ir a Login</a>
+      </div>
+      <div class="alert alert-warning" *ngIf="done=='no'">
+         El nick que elegiste o el correo electrónico ya está registrado en nuestra base de datos
+      </div>
+      <div class="form-group">
+         <label for="nick" class="text-primary font-weight-bold small">Usuario</label>
+         <input type="text" class="form-control" #nick="ngModel" [(ngModel)]="user.nick" name="nick" placeholder="Nombre de Usuario (nick)" required>
+         <small *ngIf="!nick.valid && nick.touched" class="form-text text-danger">El nombre de usuario es obligatorio</small>
+      </div>
+      <div class="form-group">
+         <label for="name" class="text-primary font-weight-bold small">Nombre</label>
+         <input type="text" class="form-control" #name="ngModel" [(ngModel)]="user.name" name="name" placeholder="Nombre" required>
+         <small *ngIf="!name.valid && name.touched" class="form-text text-danger">El nombre es obligatorio</small>
+      </div>
+      <div class="form-group">
+         <label for="surname" class="text-primary font-weight-bold small">Apellidos</label>
+         <input type="text" class="form-control" #surname="ngModel" [(ngModel)]="user.surname" name="surname" placeholder="Apellidos" required>
+         <small *ngIf="!surname.valid && surname.touched" class="form-text text-danger">Los apellidos son obligatorios</small>
+      </div>
+      <div class="form-group">
+         <label for="email" class="text-primary font-weight-bold small">Email</label>
+         <input type="email" class="form-control text-lowercase" #email="ngModel" [(ngModel)]="user.email" name="email" placeholder="Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+         <small *ngIf="!email.valid && email.touched" class="form-text text-danger">El email no es correcto</small>
+      </div>
+      <div class="form-group">
+         <label for="password" class="text-primary font-weight-bold small">Contraseña</label>
+         <input type="password" autocomplete="off" class="form-control" #password="ngModel" [(ngModel)]="user.password" name="password" placeholder="Contraseña" required pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
+         <small *ngIf="!password.valid && password.touched" class="form-text text-danger">La contraseña no es válida. Debe contener números, maýusculas, minúsculas y caracteres especiales con al menos 8 caracteres de longitud</small>
+      </div>      
+      <div class="form-check">
+         <input class="form-check-input" style="margin-top: 0.45rem" type="checkbox" name="accept" #accept="ngModel" [(ngModel)]="user.accept" required>
+         <label class="form-check-label d-block text-secondary font-weight-bold" for="accept"><small>Aceptar <a href="#" target="_blank">Términos y Condiciones</a></small></label>
+         <small *ngIf="!accept.valid && accept.touched" class="form-text text-danger">Debes aceptar los términos y condiciones para poder registrarte</small>
+       </div>
+       <div class="form-group mt-3">         
+           <input type="submit" class="btn btn-primary offset-3 col-6" value="Registrarse" [disabled]="!registerForm.form.valid">
+       </div>                
+   </form>
+</div>  

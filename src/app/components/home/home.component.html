@@ -1,0 +1,13 @@
+<div class="container-fluid component d-flex align-items-center justify-content-center">
+   <div class="jumbotron px-5">
+      <img src="../../../assets/img/LogoBlanco.svg" width="50%" class="d-block m-auto pb-3">
+      <h1 class="font-weight-bold display-4 text-center">Bienvenido<br>DGB Social Network</h1>
+      <p class="d-flex justify-content-around pt-3 mx-5"  *ngIf="!identifiedUser">
+         <a class="btn btn-primary" [routerLink]="['/login']" [routerLinkActive]="['actived']"><i class="fas fa-sign-in-alt"></i>
+            Login <span class="sr-only">(current)</span></a>
+
+         <a class="btn btn-primary" [routerLink]="['/register']" [routerLinkActive]="['actived']"><i class="fas fa-user-plus"></i>
+            Registro</a>
+      </p>
+   </div>
+</div>

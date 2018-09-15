@@ -1,16 +1,16 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
-import { UserService } from './services/user.service';
-import { User } from './models/user';
+import { Component, OnInit, Input, DoCheck } from '@angular/core';
+import { User } from '../../models/user';
+import { UserService } from '../../services/user.service';
 
 
 @Component({
-   selector: 'app-root',
-   templateUrl: './app.component.html',
-   styleUrls: ['./app.component.css'],
+   selector: 'app-home',
+   templateUrl: './home.component.html',
+   styleUrls: ['./home.component.css'],
    providers: [UserService]
 })
-export class AppComponent implements OnInit, DoCheck {
-   public static identifiedUser: User;
+export class HomeComponent implements OnInit, DoCheck {
+
    public identifiedUser: User;
 
    constructor(
@@ -22,12 +22,9 @@ export class AppComponent implements OnInit, DoCheck {
    }
 
    ngDoCheck() {
-
-      if (this.identifiedUser) { return false; }
+      if (this.identifiedUser !== undefined && localStorage.getItem('token')) { return false; }
       this.getIdentified();
-
    }
-
 
    getIdentified() {
       this._userService.getIdentifiedUser().subscribe(res => {
@@ -40,9 +37,5 @@ export class AppComponent implements OnInit, DoCheck {
       }, err => {
          this.identifiedUser = null;
       });
-   }
-
-   change(Event) {
-      this.identifiedUser = Event;
    }
 }
