@@ -64,3 +64,6 @@ a.dropdown-item.nav-link{
    background-color: white;
    margin-top: -2px;
 }
+.logo {
+   cursor: default;
+}

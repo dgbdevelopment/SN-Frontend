@@ -11,6 +11,11 @@ import { RegisterComponent } from './components/register/register.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { UserEditionComponent } from './components/user-edition/user-edition.component';
+import { UsersComponent } from './components/users/users.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { TimelineComponent } from './components/timeline/timeline.component';
+import { MomentModule } from 'angular2-moment';
+import { ProfileComponent } from './components/profile/profile.component';
 
 // import * as $ from 'jquery';
 
@@ -21,13 +26,18 @@ import { UserEditionComponent } from './components/user-edition/user-edition.com
     RegisterComponent,
     NavbarComponent,
     HomeComponent,
-    UserEditionComponent
+    UserEditionComponent,
+    UsersComponent,
+    SidebarComponent,
+    TimelineComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     routing,
-    HttpClientModule
+    HttpClientModule,
+    MomentModule
   ],
   providers: [
    appRoutingProviders

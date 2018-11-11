@@ -1,7 +1,8 @@
 <div class="container-fluid component">
+   <div class="col-12 col-md-8 col-sm-7">
 
 
-   <form #editForm="ngForm" (ngSubmit)="onSubmit(editForm)" class="col-11 col-md-8 col-lg-6 col-xl-5 mx-auto" *ngIf="identifiedUser">
+   <form #editForm="ngForm" (ngSubmit)="onSubmit(editForm)" class="col-11 col-md-10 col-lg-8 col-xl-7 mx-auto" *ngIf="identifiedUser">
       <h1 class="text-secondary text-center mb-4">Editar datos de usuario</h1>
       <div class="alert alert-success text-center" *ngIf="done=='yes'">
          Datos editados correctamente
@@ -45,4 +46,5 @@
          <input type="submit" class="btn btn-primary offset-3 col-6" value="Editar" [disabled]="!editForm.form.valid">
       </div>
    </form>
+   </div>
 </div>

@@ -6,10 +6,10 @@ import { UploadService } from '../../services/upload.service';
 import { Global } from '../../services/global';
 
 @Component({
-  selector: 'app-user-edition',
-  templateUrl: './user-edition.component.html',
-  styleUrls: ['./user-edition.component.css'],
-  providers: [UserService, UploadService]
+   selector: 'app-user-edition',
+   templateUrl: './user-edition.component.html',
+   styleUrls: ['./user-edition.component.css'],
+   providers: [UserService, UploadService]
 })
 export class UserEditionComponent implements OnInit, DoCheck {
 
@@ -18,17 +18,17 @@ export class UserEditionComponent implements OnInit, DoCheck {
    public filesToUpload: Array<File>;
    public url: string;
 
-  constructor(
-     private _route: ActivatedRoute,
-     private _router: Router,
-     private _userService: UserService,
-     private _uploadService: UploadService
-  ) {
-     this.url = Global.url;
-  }
+   constructor(
+      private _route: ActivatedRoute,
+      private _router: Router,
+      private _userService: UserService,
+      private _uploadService: UploadService
+   ) {
+      this.url = Global.url;
+   }
 
-  ngOnInit() {
-   this.getIdentified();
+   ngOnInit() {
+      this.getIdentified();
    }
 
    ngDoCheck() {
@@ -54,11 +54,11 @@ export class UserEditionComponent implements OnInit, DoCheck {
          if (res.user && res.user._id) {
             this.identifiedUser = res.user;
             this._uploadService.makeFileRequest(Global.url + 'uploadimage/' + res.user._id, [],
-             this.filesToUpload, localStorage.getItem('token'), 'image')
-             .then((result: any) => {
-               this.done = 'yes';
-               location.reload();
-             });
+               this.filesToUpload, localStorage.getItem('token'), 'image')
+               .then((result: any) => {
+                  this.done = 'yes';
+                  location.reload();
+               });
 
          } else {
             this.done = 'no';

@@ -1,9 +1,16 @@
 /* ESTILOS GENERALES */
+body{
+   min-width: 430px !important;
+}
 .component{
-   background-image: linear-gradient( 180deg, #aff7ef 0%, #59c9bd 100%);
+   
+   background-attachment: fixed;
    margin-top: 0px;
-   height: 100vh;
-   padding: 75px 25px 0 25px;
+   min-height: 100vh;
+   padding: 75px 25px 25px 25px;
+}
+.container-fluid{
+   background-image: linear-gradient( 180deg, #aff7ef 0%, #59c9bd 100%);
 }
 .btn:disabled{
    cursor: not-allowed;
@@ -13,3 +20,6 @@
    background-color: rgba(0,0,0,.2);
    border-radius: 50%;
 } */
+img.rounded-circle{
+   object-fit: contain;
+}

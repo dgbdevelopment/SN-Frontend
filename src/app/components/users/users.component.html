@@ -1,0 +1,81 @@
+<div class="container-fluid component">
+   <div class="col-sm-8 col-12">
+   <h1 class="text-secondary text-center mb-4">Listado de usuarios</h1>
+   <ul class="pagination justify-content-center mt-3">
+      <li class="page-item mr-3">
+         <a class="btn btn-primary" [routerLink]="['/users/', 1]">|<<</a> </li> <li class="page-item mr-3" *ngIf="page >1">
+               <a class="btn btn-primary" [routerLink]="['/users/', prevPage]">Anterior</a>
+      </li>
+      <li class="page-item mr-3" *ngIf="page <= 1">
+         <a class="btn btn-primary disabled" href="#">Anterior</a>
+      </li>
+
+      <li class="page-item disabled">
+         <a class="page-link" href="#">Página {{page}} de {{totalPages}}</a>
+      </li>
+
+      <li class="page-item ml-3" *ngIf="page != totalPages">
+         <a class="btn btn-primary" [routerLink]="['/users/', nextPage]">Siguiente</a>
+      </li>
+      <li class="page-item ml-3" *ngIf="page == totalPages">
+         <a class="btn btn-primary disabled">Siguiente</a>
+      </li>
+      <li class="page-item ml-3">
+         <a class="btn btn-primary" [routerLink]="['/users/', totalPages]">>>|</a>
+      </li>
+   </ul>
+   <div class="col-11 col-md-10 col-lg-8 col-xl-7 mx-auto p-5 rounded" style="background: white" *ngIf="identifiedUser">
+      <div *ngFor="let user of users" class="container card mt-3">
+         <div class="card-header">
+            <img class="card-img-top rounded-circle" *ngIf="user.image != 'No image selected'" src="{{url + 'getimage/' + user.image}}"
+               style="object-fit: contain; width: 100px; height: 100px;" alt="No image">
+            <img class="card-img-top rounded-circle" *ngIf="user.image == 'No image selected'" src="../../../assets/img/anonimous_user.png"
+               style="object-fit: contain; width: 100px; height: 100px;" alt="No image">
+            <h5 class="card-title d-inline ml-3" (click)="viewProfile(user._id)">{{user.nick}}</h5>
+         </div>
+
+         <div class="card-body">
+            <p class="card-text">{{user.name +' '+user.surname}}</p>
+            <div class="buttons" *ngIf="user._id != identifiedUser._id">
+               <button *ngIf="following.indexOf(user._id)==-1" class="btn btn-primary" (click)="followUser(user._id)"><i
+                     class="fas fa-plus-circle"></i>
+                  Seguir
+               </button>
+
+               <button *ngIf="following.indexOf(user._id)>=0" class="btn btn-secondary" (mouseenter)="mouseEnter(user._id)"
+                  (mouseleave)="mouseLeave()" [class.btn-danger]="userFollowing == user._id">
+                  <span *ngIf="userFollowing == user._id; else isfollowing" (click)="unfollowUser(user._id)">
+                     <i class="fas fa-minus-circle"></i>
+                     Dejar de seguir</span>
+                  <ng-template #isfollowing><i class="fas fa-check-circle"></i>
+                     Siguiendo</ng-template>
+               </button>
+            </div>
+         </div>
+      </div>
+   </div>
+   <ul class="pagination justify-content-center mt-3">
+      <li class="page-item mr-3">
+         <a class="btn btn-primary" [routerLink]="['/users/', 1]">|<<</a> </li> <li class="page-item mr-3" *ngIf="page >1">
+               <a class="btn btn-primary" [routerLink]="['/users/', prevPage]">Anterior</a>
+      </li>
+      <li class="page-item mr-3" *ngIf="page <= 1">
+         <a class="btn btn-primary disabled" href="#">Anterior</a>
+      </li>
+
+      <li class="page-item disabled">
+         <a class="page-link " href="#">Página {{page}} de {{totalPages}}</a>
+      </li>
+
+      <li class="page-item ml-3" *ngIf="page != totalPages">
+         <a class="btn btn-primary" [routerLink]="['/users/', nextPage]">Siguiente</a>
+      </li>
+      <li class="page-item ml-3" *ngIf="page == totalPages">
+         <a class="btn btn-primary disabled">Siguiente</a>
+      </li>
+      <li class="page-item ml-3">
+         <a class="btn btn-primary" [routerLink]="['/users/', totalPages]">>>|</a>
+      </li>
+   </ul>
+</div>
+</div>

@@ -1,0 +1,40 @@
+<div class="sidebar col-11 col-sm-3 float-right">
+   <div class="datos" *ngIf="IdentUser">
+      <p><img *ngIf="IdentUser.image != 'No image selected'" src="{{ url + 'getimage/' + IdentUser.image }}" width="35px"
+            height="35px" class="rounded-circle">
+         <img *ngIf="IdentUser.image == 'No image selected'" src="../../../assets/img/anonimous_user.png" width="35px"
+            height="35px" class="rounded-circle">
+         <span [routerLink]="['/profile/', IdentUser._id]" style="cursor: pointer"> <strong> {{IdentUser.nick}}</strong></span></p>
+      <p>{{IdentUser.name + ' ' + IdentUser.surname}}</p>
+   </div>
+   <div class="stats d-flex justify-content-around text-center pt-3">
+      <a href="#"><span><i class="far fa-hand-point-right text-primary" title="Siguiendo a..."></i><br>{{stats.following}}</span></a>
+      <a href="#"><span><i class="far fa-hand-peace text-primary" title="Seguido por..."></i><br>{{stats.followed}}</span></a>
+      <a [routerLink]="['/timeline/'+IdentUser._id]"><span><i class="fab fa-leanpub text-primary" title="Mis publicaciones"></i><br>{{stats.publications}}</span></a>
+   </div>
+   <div class="formulario">
+      <div class="alert alert-success text-center" *ngIf="status=='success'">
+         Publicación creada correctamente
+      </div>
+      <div class="alert alert-warning" *ngIf="status=='error'">
+         Error al enviar publicación
+      </div>
+      <form #pubForm="ngForm" (ngSubmit)="onSubmit(pubForm)" class="col-11">
+         <div class="form-group">
+            <label for="text" class="text-primary font-weight-bold small">Crea una publicación</label>
+            <textarea id="pubText" class="form-control" #text="ngModel" [(ngModel)]="pub.text" name="text" placeholder="Su texto aquí..."
+               required></textarea>
+            <small *ngIf="!text.valid && text.touched" class="form-text text-danger">La publicación no pude contener un
+               texto vacío</small>
+         </div>
+         <div class="form-group">
+            <label for="pubImage" class="text-primary font-weight-bold small">Subir Imagen</label>
+            <input type="file" name="pubImage" class="form-control-file " id="pubImage" placeholder="Subir imagen"
+               (change)="fileChangeEvent($event)">
+         </div>
+         <div class="form-group" style="margin-top: 2rem">
+            <input type="submit" class="btn btn-primary offset-3 col-6" value="Publicar" [disabled]="!pubForm.form.valid">
+         </div>
+      </form>
+   </div>
+</div>

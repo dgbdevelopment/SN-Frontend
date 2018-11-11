@@ -10,7 +10,6 @@ import { User } from './models/user';
    providers: [UserService]
 })
 export class AppComponent implements OnInit, DoCheck {
-   public static identifiedUser: User;
    public identifiedUser: User;
 
    constructor(

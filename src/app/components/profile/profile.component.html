@@ -1,0 +1,40 @@
+<div class="container-fluid component">
+   <div class="col-sm-8 col-12">
+      <div class="col-sm-10 col-12 mx-auto">
+         <div class="profile" *ngIf="userToShow">
+            <div class="datos text-center clearfix">
+
+               <p class=""><img *ngIf="userToShow.image != 'No image selected'" src="{{ url + 'getimage/' + userToShow.image }}"
+                     width="35px" height="35px" class="rounded-circle">
+                  <img *ngIf="userToShow.image == 'No image selected'" src="../../../assets/img/anonimous_user.png"
+                     width="35px" height="35px" class="rounded-circle">
+                  <span> <strong> {{userToShow.nick}}</strong></span></p>
+               <p>{{userToShow.name + ' ' + userToShow.surname}}</p>
+               <p *ngIf="followed"><label class="small font-weight-bold alert alert-dark py-1 px-2">Te sigue</label></p>
+
+            </div>
+            <div class="stats d-flex justify-content-around text-center pt-3" *ngIf="userStats">
+               <a href="#"><span><i class="far fa-hand-point-right text-primary" title="Siguiendo a..."></i><br>Siguiendo<br>{{userStats.following}}</span></a>
+               <a href="#"><span><i class="far fa-hand-peace text-primary" title="Seguido por..."></i><br>Seguidores<br>{{userStats.followed}}</span></a>
+               <a [routerLink]="['/timeline/'+userToShow._id]"><span><i class="fab fa-leanpub text-primary" title="Mis publicaciones"></i><br>Publicaciones<br>{{userStats.publications}}</span></a>
+            </div>
+            <div class="buttons text-center mt-3" *ngIf="userToShow && identifiedUser &&userToShow._id != identifiedUser._id">
+               <button *ngIf="!following" class="btn btn-primary" (click)="followUser(userToShow._id)"><i class="fas fa-plus-circle"></i>
+                  Seguir</button>
+
+               <button *ngIf="following" class="btn btn-secondary" (mouseenter)="mouseEnter(userToShow._id)"
+                  (mouseleave)="mouseLeave()" [class.btn-danger]="userFollowing == userToShow._id">
+                  <span *ngIf="userFollowing == userToShow._id; else isfollowing" (click)="unfollowUser(userToShow._id)">
+                     <i class="fas fa-minus-circle"></i>
+                     Dejar de seguir</span>
+                  <ng-template #isfollowing><i class="fas fa-check-circle"></i>
+                     Siguiendo</ng-template>
+               </button>
+            </div>
+
+         </div>
+      </div>
+
+   </div>
+   <app-timeline></app-timeline>
+</div>

@@ -40,9 +40,9 @@ export class UserService {
       const token = this.getToken();
 
       const headers = new HttpHeaders().set('Content-type', 'application/json')
-                                       .set('Authorization', token);
+         .set('Authorization', token);
 
-      return this._http.get(this.url + 'user', {headers: headers});
+      return this._http.get(this.url + 'user', { headers: headers });
    }
 
    getToken() {
@@ -57,17 +57,16 @@ export class UserService {
       return this.token;
    }
 
-   getCounters(user = null): Observable<any> {
+   getCounters(user?): Observable<any> {
       const token = this.getToken();
 
       const headers = new HttpHeaders().set('Content-type', 'application/json')
-                                       .set('Authorization', token);
+         .set('Authorization', token);
 
-      if (user != null) {
-         return this._http.get(this.url + 'counters/' + user, {headers: headers});
-      } else {
-         return this._http.get(this.url + 'counters', {headers: headers});
-      }
+         if (user) {
+            return this._http.get(this.url + 'counters/' + user, { headers: headers });
+         }
+         return this._http.get(this.url + 'counters/', { headers: headers });
    }
    updateUser(updateUser: User): Observable<any> {
       // console.log(newUser);
@@ -75,8 +74,22 @@ export class UserService {
       const token = this.getToken();
       const params = JSON.stringify(updateUser);
       const headers = new HttpHeaders().set('Content-Type', 'application/json')
-                                       .set('Authorization', token);
+         .set('Authorization', token);
 
       return this._http.put(this.url + 'update/' + updateUser._id, params, { headers: headers });
+   }
+   getUsers(page = null): Observable<any> {
+      const headers = new HttpHeaders().set('Content-Type', 'application/json')
+         .set('Authorization', this.getToken());
+      return this._http.get(this.url + 'users/' + page, { headers: headers });
+   }
+   getUser(userId?): Observable<any> {
+      const headers = new HttpHeaders().set('Content-Type', 'application/json')
+         .set('Authorization', this.getToken());
+      return this._http.get(this.url + 'user/' + userId, { headers: headers });
+   }
+
+   getStats() {
+      return JSON.parse(localStorage.getItem('stats'));
    }
 }

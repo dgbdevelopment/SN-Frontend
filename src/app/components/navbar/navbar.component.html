@@ -1,7 +1,7 @@
 <div class="container-fluid fixed-top">
    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a class="navbar-brand mr-5" href="#"><img alt="DGB Logo" src="../assets/img/LogoBlanco.svg" width="30" style="margin-top: -6px">         DGB
-         Social Network</a>
+      <span class="logo navbar-brand mr-5"><img class="logo" alt="DGB Logo" src="../assets/img/LogoBlanco.svg" width="30" style="margin-top: -6px">         DGB
+         Social Network</span>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
          aria-label="Toggle navigation">
          <span class="navbar-toggler-icon"></span>
@@ -13,20 +13,21 @@
                   Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-               <a class="nav-link" href="#"><i class="fas fa-th-list"></i> Publicaciones</a>
+               <a class="nav-link" [routerLink]="['/timeline']" [routerLinkActive]="['actived']"><i class="fas fa-th-list"></i> Publicaciones</a>
             </li>
             <li class="nav-item active">
-               <a class="nav-link" href="#"><i class="fas fa-users"></i> Usuarios</a>
+               <a class="nav-link" [routerLink]="['/users']" [routerLinkActive]="['actived']"><i class="fas fa-users"></i> Usuarios</a>
             </li>
          </ul>
          <ul class="navbar-nav">
             <li class="nav-item dropdown active">               
                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                      <img *ngIf="IdentUser.image != 'No image selected'" src="{{ url + 'getimage/' + IdentUser.image }}" width="35px" height="35px">
+                     <img *ngIf="IdentUser.image == 'No image selected'" src="../../../assets/img/anonimous_user.png" width="35px" height="35px">
                      <span>{{IdentUser.nick}}</span>
                </a>
                <div class="dropdown-menu mr-0" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item nav-link" href="#"><i class="fas fa-user"></i> Mi Perfil</a>
+                  <a class="dropdown-item nav-link" [routerLink]="['/profile', IdentUser._id]"><i class="fas fa-user"></i> Mi Perfil</a>
                   <a class="dropdown-item nav-link" [routerLink]="['/user-edition']"><i class="fas fa-users-cog"></i> Mis Datos</a>
                   <a class="dropdown-item nav-link pointer" (click)="logOut()"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
                </div>
