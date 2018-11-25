@@ -109,6 +109,18 @@ export class TimelineComponent implements OnInit, DoCheck {
       }
 
    }
+
+   deletePub(pubId) {
+      this._publicationService.deletePub(this.token, pubId).subscribe(
+         res => {
+            console.log(res);
+            window.location.reload();
+         }, err => {
+            console.log(<any>err);
+         }
+      );
+   }
+
    myOwn() {
       this._route.params.subscribe(
          params => {

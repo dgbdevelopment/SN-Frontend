@@ -16,6 +16,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TimelineComponent } from './components/timeline/timeline.component';
 import { MomentModule } from 'angular2-moment';
 import { ProfileComponent } from './components/profile/profile.component';
+import { FollowingComponent } from './components/following/following.component';
+import { FollowedComponent } from './components/followed/followed.component';
 
 // import * as $ from 'jquery';
 
@@ -30,7 +32,9 @@ import { ProfileComponent } from './components/profile/profile.component';
     UsersComponent,
     SidebarComponent,
     TimelineComponent,
-    ProfileComponent
+    ProfileComponent,
+    FollowingComponent,
+    FollowedComponent
   ],
   imports: [
     BrowserModule,

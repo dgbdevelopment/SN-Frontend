@@ -14,8 +14,8 @@
 
             </div>
             <div class="stats d-flex justify-content-around text-center pt-3" *ngIf="userStats">
-               <a href="#"><span><i class="far fa-hand-point-right text-primary" title="Siguiendo a..."></i><br>Siguiendo<br>{{userStats.following}}</span></a>
-               <a href="#"><span><i class="far fa-hand-peace text-primary" title="Seguido por..."></i><br>Seguidores<br>{{userStats.followed}}</span></a>
+               <a [routerLink]="['/following/',userToShow._id,1]"><span><i class="far fa-hand-point-right text-primary" title="Siguiendo a..."></i><br>Siguiendo<br>{{userStats.following}}</span></a>
+               <a [routerLink]="['/followed/',userToShow._id,1]"><span><i class="far fa-hand-peace text-primary" title="Seguido por..."></i><br>Seguidores<br>{{userStats.followed}}</span></a>
                <a [routerLink]="['/timeline/'+userToShow._id]"><span><i class="fab fa-leanpub text-primary" title="Mis publicaciones"></i><br>Publicaciones<br>{{userStats.publications}}</span></a>
             </div>
             <div class="buttons text-center mt-3" *ngIf="userToShow && identifiedUser &&userToShow._id != identifiedUser._id">

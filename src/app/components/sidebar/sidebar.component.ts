@@ -65,7 +65,7 @@ export class SidebarComponent implements OnInit, DoCheck {
                      } else {
                         this._router.navigate(['timeline/' + this.pub.user]);
                      }
-                  }, 5000);
+                  }, 3000);
                this.getCounters();
                form.reset();
                });

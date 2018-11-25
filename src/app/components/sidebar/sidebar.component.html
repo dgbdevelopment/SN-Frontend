@@ -8,8 +8,8 @@
       <p>{{IdentUser.name + ' ' + IdentUser.surname}}</p>
    </div>
    <div class="stats d-flex justify-content-around text-center pt-3">
-      <a href="#"><span><i class="far fa-hand-point-right text-primary" title="Siguiendo a..."></i><br>{{stats.following}}</span></a>
-      <a href="#"><span><i class="far fa-hand-peace text-primary" title="Seguido por..."></i><br>{{stats.followed}}</span></a>
+      <a [routerLink]="'/following/'+IdentUser._id+'/'+1"><span><i class="far fa-hand-point-right text-primary" title="Siguiendo a..."></i><br>{{stats.following}}</span></a>
+      <a [routerLink]="'/followed/'+IdentUser._id+'/'+1"><span><i class="far fa-hand-peace text-primary" title="Seguido por..."></i><br>{{stats.followed}}</span></a>
       <a [routerLink]="['/timeline/'+IdentUser._id]"><span><i class="fab fa-leanpub text-primary" title="Mis publicaciones"></i><br>{{stats.publications}}</span></a>
    </div>
    <div class="formulario">

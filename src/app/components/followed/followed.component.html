@@ -1,0 +1,81 @@
+<div class="container-fluid component">
+   <div class="col-sm-8 col-12">
+   <h1 class="text-secondary text-center mb-4">Usuarios que siguen a <span *ngIf="userNick">{{userNick}}</span></h1>
+   <ul class="pagination justify-content-center mt-3">
+      <li class="page-item mr-3">
+         <a class="btn btn-primary" [routerLink]="['/followed/',userId, 1]">|<<</a> </li> <li class="page-item mr-3" *ngIf="page >1">
+               <a class="btn btn-primary" [routerLink]="['/followed/', userId, prevPage]">Anterior</a>
+      </li>
+      <li class="page-item mr-3" *ngIf="page <= 1">
+         <a class="btn btn-primary disabled" href="#">Anterior</a>
+      </li>
+
+      <li class="page-item disabled">
+         <a class="page-link" href="#">Página {{page}} de {{totalPages}}</a>
+      </li>
+
+      <li class="page-item ml-3" *ngIf="page != totalPages">
+         <a class="btn btn-primary" [routerLink]="['/followed/', userId, nextPage]">Siguiente</a>
+      </li>
+      <li class="page-item ml-3" *ngIf="page == totalPages">
+         <a class="btn btn-primary disabled">Siguiente</a>
+      </li>
+      <li class="page-item ml-3">
+         <a class="btn btn-primary" [routerLink]="['/followed/', userId, totalPages]">>>|</a>
+      </li>
+   </ul>
+   <div class="col-11 col-md-10 col-lg-8 col-xl-7 mx-auto p-5 rounded" style="background: white" *ngIf="users && users.length > 0">
+      <div *ngFor="let item of users" class="container card mt-3">
+         <div class="card-header">
+            <img class="card-img-top rounded-circle" *ngIf="item.followed.image != 'No image selected'" src="{{url + 'getimage/' + item.followed.image}}"
+               style="object-fit: contain; width: 100px; height: 100px;" alt="No image">
+            <img class="card-img-top rounded-circle" *ngIf="item.followed.image == 'No image selected'" src="../../../assets/img/anonimous_user.png"
+               style="object-fit: contain; width: 100px; height: 100px;" alt="No image">
+            <h5 class="card-title d-inline ml-3" (click)="viewProfile(item.followed._id)">{{item.followed.nick}}</h5>
+         </div>
+
+         <div class="card-body" *ngIf="identifiedUser">
+            <p class="card-text">{{item.followed.name +' '+item.followed.surname}}</p>
+            <div class="buttons" *ngIf="following && item.followed._id != identifiedUser._id">
+               <button *ngIf="following.indexOf(item.followed._id)==-1" class="btn btn-primary" (click)="followUser(item.followed._id)"><i
+                     class="fas fa-plus-circle"></i>
+                  Seguir
+               </button>
+
+               <button *ngIf="following.indexOf(item.followed._id)>=0" class="btn btn-secondary" (mouseenter)="mouseEnter(item.followed._id)"
+                  (mouseleave)="mouseLeave()" [class.btn-danger]="userFollowing == item.followed._id">
+                  <span *ngIf="userFollowing == item.followed._id; else isfollowing" (click)="unfollowUser(item.followed._id)">
+                     <i class="fas fa-minus-circle"></i>
+                     Dejar de seguir</span>
+                  <ng-template #isfollowing><i class="fas fa-check-circle"></i>
+                     Siguiendo</ng-template>
+               </button>
+            </div>
+         </div>
+      </div>
+   </div>
+   <ul class="pagination justify-content-center mt-3">
+      <li class="page-item mr-3">
+         <a class="btn btn-primary" [routerLink]="['/followed/',userId, 1]">|<<</a> </li> <li class="page-item mr-3" *ngIf="page >1">
+               <a class="btn btn-primary" [routerLink]="['/followed/', userId, prevPage]">Anterior</a>
+      </li>
+      <li class="page-item mr-3" *ngIf="page <= 1">
+         <a class="btn btn-primary disabled" href="#">Anterior</a>
+      </li>
+
+      <li class="page-item disabled">
+         <a class="page-link" href="#">Página {{page}} de {{totalPages}}</a>
+      </li>
+
+      <li class="page-item ml-3" *ngIf="page != totalPages">
+         <a class="btn btn-primary" [routerLink]="['/followed/', userId, nextPage]">Siguiente</a>
+      </li>
+      <li class="page-item ml-3" *ngIf="page == totalPages">
+         <a class="btn btn-primary disabled">Siguiente</a>
+      </li>
+      <li class="page-item ml-3">
+         <a class="btn btn-primary" [routerLink]="['/followed/', userId, totalPages]">>>|</a>
+      </li>
+   </ul>
+</div>
+</div>

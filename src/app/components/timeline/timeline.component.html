@@ -40,6 +40,29 @@
             <div class="card-body">
                <p class="card-text"><strong>{{pub.user.name +' '+pub.user.surname}}</strong></p>
                <p>{{pub.text}}</p>
+               <p class="col-12" *ngIf="pub && pub.file!='null' && pub.file!=null"><img class="imgpub" src="{{url + 'getimagepub/'+pub.file}}" width="100%"></p>
+               <p class="text-right" *ngIf="pub.user._id == identifiedUser._id"><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal"><i class="fas fa-trash-alt"></i> <small> Eliminar publicación </small></button></p>               
+                
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="myModalLabel">¿Seguro que quieres eliminar la publicación?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        Si borras la publicación no podrás volver a recuperarla
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" (click)="deletePub(pub._id)" data-dismiss="modal">Confirmar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
             </div>
             <div class="date position-absolute">
                {{ (pub.created_at | amFromUnix) | amLocale:'es' | amTimeAgo }}
@@ -47,7 +70,7 @@
          </div>
       </div>
       <div class="col-11 col-md-10 col-lg-8 col-xl-7 mx-auto mt-4 text-center">
-         <button class="btn btn-primary" (click)="moreViews(own)" *ngIf="page < totalPages">Ver más publicaciones</button>
+         <button class="btn btn-primary" (click)="moreViews(own)" *ngIf="page < totalPages">Ver más publicaciones</button>         
       </div>
    </div>
 </div>

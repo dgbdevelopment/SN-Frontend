@@ -8,3 +8,7 @@
    font-size: 0.8rem;
    color: #607D8B;
 }
+.imgpub{
+   max-height: 535px;
+   object-fit: contain;
+}
