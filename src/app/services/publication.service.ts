@@ -10,7 +10,7 @@ export class PublicationService {
    public url: string;
 
    constructor(
-      public _http: HttpClient
+      private _http: HttpClient
    ) {
       this.url = Global.url;
    }

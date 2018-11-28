@@ -37,11 +37,7 @@ export class FollowedComponent implements OnInit, DoCheck {
       private _followService: FollowService
    ) {
       this.url = Global.url;
-      if (localStorage.getItem('token')) {
-         this.token = localStorage.getItem('token');
-      } else {
-         this.token = null;
-      }
+      this.token = this._userService.getToken();
    }
 
    ngOnInit() {
@@ -101,7 +97,6 @@ export class FollowedComponent implements OnInit, DoCheck {
    getUsersFollowed(token, userId = null, page = 1) {
       this._followService.getFollowedUsers(token, userId, page).subscribe(
          response => {
-            console.log(response);
             if (!response.follows || response.follows.length <= 0) {
                this.status = 'error';
             } else {

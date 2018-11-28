@@ -1,0 +1,27 @@
+<div class="container-fluid component">
+   <div class="row">
+      <div class="col-3 p-2">
+         <h3>{{title}}</h3>
+         <div class="sidebar-admin">
+            <ul class="nav nav-pills nav-stacked flex-column">
+               <li role="presentation">
+                  <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['enviar']">Enviar mensajes</a>
+               </li>
+               <li role="presentation">
+                  <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['recibidos']">Mensajes recibidos</a>
+               </li>
+               <li role="presentation">
+                  <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['enviados']">Mensajes enviados</a>
+               </li>
+               <li role="presentation">
+                  <a class="nav-link" [routerLink]="['/home']">Información</a>
+               </li>
+            </ul>
+         </div>
+      </div>
+
+      <div class="col-5 p-2 pl-5">
+         <router-outlet></router-outlet>
+      </div>
+   </div>
+</div>

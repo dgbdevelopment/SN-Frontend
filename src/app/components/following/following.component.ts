@@ -36,11 +36,7 @@ export class FollowingComponent implements OnInit, DoCheck {
       private _followService: FollowService
    ) {
       this.url = Global.url;
-      if (localStorage.getItem('token')) {
-         this.token = localStorage.getItem('token');
-      } else {
-         this.token = null;
-      }
+      this.token = this._userService.getToken();
    }
 
    ngOnInit() {

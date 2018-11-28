@@ -4,7 +4,7 @@ export class Message {
       public emitter: string,
       public receiver: string,
       public text: string,
-      public created_at: Date,
+      public created_at: string,
       public viewed: boolean
    ) {}
 }

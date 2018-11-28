@@ -1,0 +1,28 @@
+<h3>{{ title }}</h3>
+<form #addForm="ngForm" (ngSubmit)="onSubmit(addForm)">
+   <div class="form-group">
+      <label for="receiver" class="text-primary font-weight-bold small">Para:</label>
+      <!-- Selector de destinatario-->
+      <select *ngIf="users && identifiedUser" name="receiver" id="receiver" class="form-control" #receiver="ngModel" [(ngModel)]="message.receiver">         
+         <option *ngFor="let user of users" value="{{user._id}}" >
+            {{user.nick}}            
+         </option>         
+      </select>
+   </div>
+   <div class="form-group">
+      <label for="text" class="text-primary font-weight-bold small">Mensaje de Texto:</label>
+      <textarea id="pubText" class="form-control" #text="ngModel" [(ngModel)]="message.text" name="text" placeholder="Su mensaje aquí..."
+         required></textarea>
+      <small *ngIf="!text.valid && text.touched" class="form-text text-danger">El mensaje no pude contener un
+         texto vacío</small>
+   </div>
+   <div class="alert alert-success text-center" *ngIf="status=='done'">
+         Mensaje enviado correctamente. Puede verlo en <a [routerLink]="['/mensajes/enviados']">Mensajes enviados</a>.
+   </div>
+   <div class="alert alert-warning text-center" *ngIf="status=='fail'">El mesaje no puedo enviarse.
+   </div>
+   
+   <div class="form-group" style="margin-top: 2rem">
+      <input type="submit" class="btn d-block m-auto btn-primary col-6" value="{{title}}" [disabled]="!addForm.form.valid">
+   </div>
+</form>

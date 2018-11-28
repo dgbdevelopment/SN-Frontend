@@ -11,7 +11,7 @@ export class UserService {
    public token: string;
 
    constructor(
-      public _http: HttpClient
+      private _http: HttpClient
    ) {
       this.url = Global.url;
    }
@@ -82,6 +82,12 @@ export class UserService {
       const headers = new HttpHeaders().set('Content-Type', 'application/json')
          .set('Authorization', this.getToken());
       return this._http.get(this.url + 'users/' + page, { headers: headers });
+   }
+
+   getAllUsers(): Observable<any> {
+      const headers = new HttpHeaders().set('Content-Type', 'application/json')
+         .set('Authorization', this.getToken());
+      return this._http.get(this.url + 'allusers', { headers: headers });
    }
    getUser(userId?): Observable<any> {
       const headers = new HttpHeaders().set('Content-Type', 'application/json')
