@@ -6,12 +6,14 @@ import { MainComponent } from './components/main/main.component';
 import { SendedComponent } from './components/sended/sended.component';
 import { ReceivedComponent } from './components/received/received.component';
 import { AddComponent } from './components/add/add.component';
+import { UserGuard } from '../services/user.guard';
 
 
 const messageRoutes: Routes = [
    {
       path: 'mensajes',
       component: MainComponent,
+      canActivate: [UserGuard],
       children: [
          {path: '', redirectTo: 'recibidos', pathMatch: 'full'},
          {path: 'enviar', component: AddComponent},

@@ -15,7 +15,7 @@ export class MessageService {
       this.url = Global.url;
    }
 
-   addMessage(token, message): Observable<any>{
+   addMessage(token, message): Observable<any> {
       const params = JSON.stringify(message);
       const headers = new HttpHeaders().set('Content-Type', 'application/json')
       .set('Authorization', token);
@@ -23,14 +23,14 @@ export class MessageService {
       return this._http.post(this.url + 'newmessage', params, {headers: headers});
    }
 
-   getReceived(token, page = 1): Observable<any>{
+   getReceived(token, page = 1): Observable<any> {
       const headers = new HttpHeaders().set('Content-Type', 'application/json')
       .set('Authorization', token);
 
       return this._http.get(this.url + 'received/' + page, {headers: headers});
    }
 
-   getEmitted(token, page = 1): Observable<any>{
+   getEmitted(token, page = 1): Observable<any> {
       const headers = new HttpHeaders().set('Content-Type', 'application/json')
       .set('Authorization', token);
 

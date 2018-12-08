@@ -110,7 +110,6 @@ export class UsersComponent implements OnInit, DoCheck {
                this._userService.getCounters().subscribe(resp => {
                   localStorage.setItem('stats', JSON.stringify(resp));
                });
-               console.log('Seguimiento correcto');
             }
          },
          err => {

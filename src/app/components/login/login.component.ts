@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
    // public userIdentified: User;
    public token: string;
    public errors: string;
+   public role: string;
 
    constructor(
       private _route: ActivatedRoute,
@@ -37,9 +38,11 @@ export class LoginComponent implements OnInit {
          if (res.user && res.user._id) {
             // this.userIdentified = res.user;
             this.token = res.token;
+            this.role = res.user.role;
             this.done = 'yes';
             // localStorage.setItem('userIdentified', JSON.stringify(this.userIdentified));
             localStorage.setItem('token', this.token);
+            localStorage.setItem('role', this.role);
             this._userService.getCounters().subscribe(resp => {
                localStorage.setItem('stats', JSON.stringify(resp));
             });

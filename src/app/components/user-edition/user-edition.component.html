@@ -1,8 +1,8 @@
 <div class="container-fluid component">
-   <div class="col-12 col-md-8 col-sm-7">
+   <div class="col-12 col-lg-8">
 
 
-   <form #editForm="ngForm" (ngSubmit)="onSubmit(editForm)" class="col-11 col-md-10 col-lg-8 col-xl-7 mx-auto" *ngIf="identifiedUser">
+   <form #editForm="ngForm" (ngSubmit)="onSubmit(editForm)" class="col-11 col-lg-8 col-xl-7 mx-auto" *ngIf="identifiedUser">
       <h1 class="text-secondary text-center mb-4">Editar datos de usuario</h1>
       <div class="alert alert-success text-center" *ngIf="done=='yes'">
          Datos editados correctamente

@@ -1,5 +1,5 @@
 <div class="container-fluid component">
-   <div class="col-sm-8 col-12">
+   <div class="col-lg-8 col-12">
    <h1 class="text-secondary text-center mb-4">Usuarios seguidos por <span *ngIf="userNick">{{userNick}}</span></h1>
    <ul class="pagination justify-content-center mt-3">
       <li class="page-item mr-3">
@@ -36,7 +36,7 @@
 
          <div class="card-body" *ngIf="identifiedUser">
             <p class="card-text">{{item.user.name +' '+item.user.surname}}</p>
-            <div class="buttons" *ngIf="item.user._id != identifiedUser._id">
+            <div class="buttons" *ngIf="item.user._id != identifiedUser._id && following">
                <button *ngIf="following.indexOf(item.user._id)==-1" class="btn btn-primary" (click)="followUser(item.user._id)"><i
                      class="fas fa-plus-circle"></i>
                   Seguir

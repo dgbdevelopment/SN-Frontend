@@ -3,7 +3,7 @@
    <div class="form-group">
       <label for="receiver" class="text-primary font-weight-bold small">Para:</label>
       <!-- Selector de destinatario-->
-      <select *ngIf="users && identifiedUser" name="receiver" id="receiver" class="form-control" #receiver="ngModel" [(ngModel)]="message.receiver">         
+      <select *ngIf="users && identifiedUser" name="receiver" id="receiver" class="form-control" #receiver="ngModel" [(ngModel)]="message.receiver" required>         
          <option *ngFor="let user of users" value="{{user._id}}" >
             {{user.nick}}            
          </option>         

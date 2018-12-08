@@ -66,7 +66,9 @@ export class AddComponent implements OnInit, DoCheck {
    getAllUsers() {
       this._userService.getAllUsers().subscribe(
          response => {
-            this.users = response.users;
+            this.users = response.users; /*.filter((user) => {
+               return user._id !== this.identifiedUser._id;
+            });*/
          },
          err => {
             console.log(<any>err);
@@ -74,7 +76,7 @@ export class AddComponent implements OnInit, DoCheck {
       );
    }
 
-   onSubmit(form){
+   onSubmit(form) {
       this.message.emitter = this.identifiedUser._id;
       // console.log(this.message);
       this._messageService.addMessage(this.token, this.message).subscribe(response => {

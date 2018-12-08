@@ -17,13 +17,17 @@ export class AppComponent implements OnInit, DoCheck {
    ) { }
 
    ngOnInit() {
-      this.getIdentified();
+      if (localStorage.getItem('token')) {
+         this.getIdentified();
+      }
    }
 
    ngDoCheck() {
 
       if (this.identifiedUser) { return false; }
-      this.getIdentified();
+      if (localStorage.getItem('token')) {
+         this.getIdentified();
+      }
 
    }
 
@@ -34,10 +38,10 @@ export class AppComponent implements OnInit, DoCheck {
             this.identifiedUser = res.user;
             // console.log(this.identifiedUser);
          } else {
-            this.identifiedUser = null;
+            this.identifiedUser = undefined;
          }
       }, err => {
-         this.identifiedUser = null;
+         this.identifiedUser = undefined;
       });
    }
 

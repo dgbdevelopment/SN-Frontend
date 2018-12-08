@@ -1,5 +1,5 @@
 <div class="container-fluid component">
-   <div class="col-sm-8 col-12" *ngIf="pubs && pubs.length">
+   <div class="col-lg-8 col-12" *ngIf="pubs && pubs.length">
       <h1 class="text-secondary text-center mb-4" *ngIf="identifiedUser && userId !== identifiedUser._id; else mias">Últimas publicaciones</h1>
       <ng-template #mias>
          <h1 class="text-secondary text-center mb-4">Mis últimas publicaciones</h1>
